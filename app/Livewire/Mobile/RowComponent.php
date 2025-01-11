@@ -40,12 +40,8 @@ class RowComponent extends Component
         $this->checkMultiselect();
     }
 
-    public function checkMultiselect(){
-        $tasks = Task::all();
-        if($tasks->every(fn($task) => $task->status === 'completed')){
-            $this->dispatch("mobile.selectMultiSelect");
-        }else if($tasks->every(fn($task) => $task->status === 'pending')){
-            $this->dispatch("mobile.deselectMultiSelect");
-        }
+    public function checkMultiselect()
+    {
+        $this->dispatch("mobile.checkMultiselect");
     }
 }

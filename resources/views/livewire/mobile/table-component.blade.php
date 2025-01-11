@@ -26,7 +26,7 @@
         @forelse ($tasks as $task)
             <livewire:mobile.row-component :task="$task" :key="$task->id . '-' . $refreshKey" />
         @empty
-            <p class="text-center">No Tasks found</p>
+            <p class="text-center italic">No Tasks found</p>
         @endforelse
     </div>
     <livewire:drawer :sortColumn="$sortColumn" :sortDirection="$sortDirection" :isCheckedMultiSelect="$isCheckedMultiSelect" :isFilterCompleted="$isFilterCompleted" :columns="$columns" />

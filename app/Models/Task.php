@@ -23,4 +23,17 @@ class Task extends Model
         return $this->belongsTo(Status::class, "status", "name");
     }
     
+    public function setCompleted()
+    {
+        $this->status = 'completed';
+        $this->completed_at = now();
+        $this->save();
+    }
+
+    public function setPending()
+    {
+        $this->status = 'pending';
+        $this->completed_at = null;
+        $this->save();
+    }
 }

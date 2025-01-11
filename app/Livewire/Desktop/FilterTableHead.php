@@ -7,9 +7,9 @@ use Livewire\Component;
 
 class FilterTableHead extends Component
 {
-    public $title, $column,$sortColumn, $sortDirection;
+    public $title, $column, $sortColumn, $sortDirection, $className;
 
-    public function mount($title,$column, $sortColumn, $sortDirection)
+    public function mount($title, $column, $sortColumn, $sortDirection)
     {
         $this->title = $title;
         $this->column = $column;

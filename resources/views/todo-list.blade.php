@@ -24,6 +24,8 @@
     <livewire:destructive-modal />
     <livewire:mobile.show-modal />
 
+ 
+   
 </body>
 
 </html>

@@ -16,7 +16,7 @@
     <table class="table mt-10">
         <!-- head -->
         <thead>
-            <tr>
+            <tr class="bg-muted border-b border-base-secondary">
                 <th>
                     <label>
                         <input type="checkbox" class="checkbox" wire:change="toggleStatusAll"
@@ -24,8 +24,13 @@
                     </label>
                 </th>
                 @foreach ($columns as $column => $title)
-                    <livewire:desktop.filter-table-head :title="$title" :column="$column" :sortDirection="$sortDirection"
-                        :sortColumn="$sortColumn" :key="$column . '-' . $refreshKey" />
+                    <livewire:desktop.filter-table-head 
+                        :title="$title" 
+                        :column="$column" 
+                        :sortDirection="$sortDirection"
+                        :sortColumn="$sortColumn" 
+                        :key="$column . '-' . $refreshKey" 
+                    />
                 @endforeach
                 <th>Actions</th>
             </tr>
@@ -35,7 +40,7 @@
                 <livewire:desktop.row-component :task="$task" :key="$task->id . '-' . $refreshKey" />
             @empty
                 <tr>
-                    <td colspan="{{ count($columns) + 2 }}" class="text-center">No tasks found</td>
+                    <td colspan="{{ count($columns) + 2 }}" class="text-center italic">No tasks found</td>
                 </tr>
             @endforelse
         </tbody>

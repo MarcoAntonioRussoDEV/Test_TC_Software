@@ -21,14 +21,16 @@
                     {{-- ShowCompleted --}}
                     <label for="toggle-completed " class="flex items-center gap-3 justify-between">
                         <p class="text-sm italic text-secondary">Show completed</p>
-                        <input name="toggle-completed" type="checkbox" class="toggle" wire:model="isFilterCompleted" />
+                        <input name="toggle-completed" type="checkbox" class="toggle" wire:model.live="isFilterCompleted" />
                     </label>
+                </li>
+                <li>
                 </li>
                 {{-- SortDirection --}}
                 <li>
                     <label for="toggle-completed " class="flex items-center gap-3 justify-between">
                         <p class="text-sm italic text-secondary">Sort direction</p>
-                        <select wire:model="sortDirection" class="select select-sm select-bordered">
+                        <select wire:model.live="sortDirection" class="select select-sm select-bordered">
                             <option value="ASC">ASC</option>
                             <option value="DESC">DESC</option>
                         </select>
@@ -38,7 +40,7 @@
                 <li>
                     <label for="toggle-completed " class="flex items-center gap-3 justify-between">
                         <p class="text-sm italic text-secondary">Sort by</p>
-                        <select wire:model="sortColumn" class="select select-sm select-bordered">
+                        <select wire:model.live="sortColumn" class="select select-sm select-bordered">
                             @foreach ($columns as $column)
                                 <option value="{{ $column }}">{{ $column }}</option>
                             @endforeach

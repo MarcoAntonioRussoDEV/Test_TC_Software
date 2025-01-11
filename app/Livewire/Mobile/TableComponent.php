@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Mobile;
 
-use App\Livewire\Desktop\TableComponent as DesktopTableComponent;
+use App\Livewire\Traits\TaskHooks;
 use App\Models\Task;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -10,6 +10,8 @@ use stdClass;
 
 class TableComponent extends Component
 {
+
+    use TaskHooks;
 
     public  $className,
             $refreshKey,
@@ -20,8 +22,6 @@ class TableComponent extends Component
             $isCheckedMultiSelect = false,
             $isFilterCompleted = true,
             $search;
-
-    
 
 
     public function mount()
@@ -47,8 +47,6 @@ class TableComponent extends Component
             'sortDirection' => $this->sortDirection,
         ]);
     }
-
-
     public function openModal()
     {
         $this->dispatch('openModal');
@@ -90,29 +88,45 @@ class TableComponent extends Component
         $this->refreshKey = now();
     }
 
-
-    #[On('mobile.sortColumn')]
-    public function sortColumn($column)
+    public function toggleStatusAll()
     {
-        if ($this->sortColumn === $column) {
-            $this->sortDirection = $this->sortDirection === 'ASC' ? 'DESC' : 'ASC';
+        if ($this->isCheckedMultiSelect) {
+            Task::where('status', 'completed')->update(['status' => 'pending']);
         } else {
-            $this->sortColumn = $column;
-            $this->sortDirection = 'ASC';
+            Task::where('status', 'pending')->update(['status' => 'completed']);
         }
+        $this->isCheckedMultiSelect = !$this->isCheckedMultiSelect;
+        $this->updateTasks();
+        $this->dispatch('toast', 'All tasks status updated.');
     }
 
 
-    #[On('updateFilterCompleted')]
-    public function updateFilterCompleted(
+    // #[On('mobile.sortColumn')]
+    // public function sortColumn($column)
+    // {
+    //     if ($this->sortColumn === $column) {
+    //         $this->sortDirection = $this->sortDirection === 'ASC' ? 'DESC' : 'ASC';
+    //     } else {
+    //         $this->sortColumn = $column;
+    //         $this->sortDirection = 'ASC';
+    //     }
+    // }
+
+
+
+
+    #[On('mobile.update')]
+    public function updateFilters(
         $isFilterCompleted,
         $sortColumn,
-        $sortDirection
+        $sortDirection,
+        $isCheckedMultiSelect
     )
     {
         $this->isFilterCompleted = $isFilterCompleted;
         $this->sortColumn = $sortColumn;
         $this->sortDirection = $sortDirection;
+        $this->isCheckedMultiSelect = $isCheckedMultiSelect;
         $this->updateTasks();
     }
     

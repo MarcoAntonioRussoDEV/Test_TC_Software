@@ -35,6 +35,7 @@ class TableComponent extends Component
     }
     public function render()
     {
+        $this->checkMultiselect();
         return view('livewire.desktop.table-component', [
             'tasks' => $this->tasks,
             'className' => $this->className,
@@ -88,9 +89,9 @@ class TableComponent extends Component
     public function toggleStatusAll()
     {
         if ($this->isCheckedMultiSelect) {
-            Task::where('status', 'completed')->update(['status' => 'pending']);
+            Task::where('status', 'completed')->get()->each->setPending();
         } else {
-            Task::where('status', 'pending')->update(['status' => 'completed']);
+            Task::where('status', 'pending')->get()->each->setCompleted();
         }
         $this->isCheckedMultiSelect = !$this->isCheckedMultiSelect;
         $this->dispatch('refreshTasks');
@@ -146,4 +147,14 @@ class TableComponent extends Component
         }
         $this->refreshKey = now();
     }
+
+    public function checkMultiselect(){
+        $tasks = Task::all();
+        if($tasks->every(fn($task) => $task->status === 'completed')){
+            $this->isCheckedMultiSelect = true;
+        }else if($tasks->every(fn($task) => $task->status === 'pending')){
+            $this->isCheckedMultiSelect = false;
+        }
+    }
+
 }
