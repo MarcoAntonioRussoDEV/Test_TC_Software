@@ -1,66 +1,51 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ToDo List
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descrizione
 
-## About Laravel
+Questo progetto è un'applicazione web sviluppata utilizzando il framework Laravel e Livewire. L'applicazione consente di gestire una lista di attività (To-Do List) con funzionalità avanzate come il filtraggio, l'ordinamento e la gestione dello stato delle attività.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Funzionalità
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Gestione delle attività**: Creazione, modifica e cancellazione delle attività.
+- **Filtraggio e ordinamento**: Filtraggio e ordinamento delle attività per vari criteri.
+- **Aggiornamenti in tempo reale**: Utilizzo di Livewire per aggiornamenti dinamici senza ricaricare la pagina.
+- **Responsive Design**: Interfaccia utente adattiva per dispositivi desktop e mobile.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Struttura del Progetto
 
-## Learning Laravel
+### Componenti Livewire
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Desktop\TableComponent**: Componente principale per la visualizzazione e la gestione delle attività in modalità desktop.
+- **Mobile\TableComponent**: Componente principale per la visualizzazione e la gestione delle attività in modalità mobile.
+- **Desktop\FilterTableHead**: Componente per la gestione dell'intestazione della tabella con funzionalità di filtraggio e ordinamento.
+- **TaskForm**: Componente per la creazione e la modifica delle attività.
+- **Toast**: Componente per la visualizzazione di notifiche.
+- **DestructiveModal**: Componente per la gestione delle azioni distruttive con conferma.
+- **Mobile\ShowModal**: Componente per la visualizzazione di modali in modalità mobile.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Modelli
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Task**: Modello per la gestione delle attività. Include metodi per impostare lo stato delle attività (`setCompleted`, `setPending`).
 
-## Laravel Sponsors
+### File di Configurazione
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **composer.json**: File di configurazione di Composer per la gestione delle dipendenze PHP.
+- **tailwind.config.js**: File di configurazione di Tailwind CSS per la personalizzazione degli stili.
 
-### Premium Partners
+### File di Visualizzazione
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- **resources/views/livewire/todo-list.blade.php**: Vista unica per applicazione single-page 
 
-## Contributing
+### File JavaScript
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **resources/js/app.js**: File JavaScript principale per la gestione degli eventi e delle funzionalità dinamiche.
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Autori
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Marco Antonio Russo** - [GitHub](https://github.com/marcoantoniorussoDEV)
 
-## License
+## Altro
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Progetto eseguito come test di valutazione per TC Software.
