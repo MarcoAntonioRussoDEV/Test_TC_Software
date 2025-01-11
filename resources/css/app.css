@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @plugin "daisyui"{
+    themes: mytheme --default;
+};
+@plugin "daisyui/theme" {
+    name: "mytheme";
+    default: true;
+    prefersdark: true;
+    color-scheme: "dark";
+    --color-base-100: oklch(13% 0.028 261.692);
+    --color-base-200: oklch(21% 0.034 264.665);
+    --color-base-300: oklch(27% 0.033 256.848);
+    --color-base-content: oklch(96% 0.003 264.542);
+    --color-primary: oklch(86% 0.022 252.894);
+    --color-primary-content: oklch(27% 0.041 260.031);
+    --color-secondary: oklch(55% 0.016 285.938);
+    --color-secondary-content: oklch(14% 0 0);
+    --color-accent: oklch(98% 0.003 247.858);
+    --color-accent-content: oklch(98% 0.016 73.684);
+    --color-neutral: oklch(13% 0.028 261.692);
+    --color-neutral-content: oklch(98% 0.002 247.839);
+    --color-info: oklch(55% 0.046 257.417);
+    --color-info-content: oklch(98% 0.019 200.873);
+    --color-success: oklch(52% 0.154 150.069);
+    --color-success-content: oklch(98% 0.031 120.757);
+    --color-warning: oklch(68% 0.162 75.834);
+    --color-warning-content: oklch(0% 0 0);
+    --color-error: oklch(44% 0.177 26.899);
+    --color-error-content: oklch(97% 0.013 17.38);
+    --radius-selector: 1rem;
+    --radius-field: 1rem;
+    --radius-box: 1rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1px;
+    --depth: 0;
+    --noise: 0;
+} */
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+  

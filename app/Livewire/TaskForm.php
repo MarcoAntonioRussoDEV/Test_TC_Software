@@ -8,29 +8,29 @@ use Livewire\Attributes\On;
 
 class TaskForm extends Component
 {
-    public $title, $description, $isModalOpen = false;
+    public $title,
+        $description,
+        $task_id,
+        $isModalOpen = false;
 
     protected $rules = [
         'title' => 'required|max:40',
     ];
 
-    
-
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
+ 
 
     public function render()
     {
         return view('livewire.task-form');
     }
-
-
+    
     #[On('openModal')]
     public function openModal()
     {
         $this->isModalOpen = true;
+        if($this->task_id){
+            $this->validate();
+        }
     }
 
     public function closeModal()
@@ -43,12 +43,33 @@ class TaskForm extends Component
     {
         $this->validate();
 
-        Task::create([
-            'title' => $this->title,
-            'description' => $this->description
-        ]);
-
+        if ($this->task_id) {
+            $task = Task::find($this->task_id);
+            $task->update([
+                'title' => $this->title,
+                'description' => $this->description,
+            ]);
+            $this->dispatch('toast', 'Task updated successfully.');
+        } else {
+            Task::create([
+                'title' => $this->title,
+                'description' => $this->description,
+            ]);
+            $this->dispatch('toast', 'Task created successfully.');
+        }
+        $this->task_id = null;
         $this->closeModal();
-        $this->dispatch('toast', 'Task created successfully.');
+        $this->dispatch('refreshTasks');
+        $this->dispatch('mobile.refreshTasks');
+    }
+
+    #[On('editTask')]
+    public function edit($id)
+    {
+        $task = Task::find($id);
+        $this->task_id = $task->id;
+        $this->title = $task->title;
+        $this->description = $task->description;
+        $this->openModal();
     }
 }

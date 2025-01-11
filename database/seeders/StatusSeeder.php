@@ -14,10 +14,8 @@ class StatusSeeder extends Seeder
     public function run(): void
     {
         DB::table('statuses')->insert([
-            ['name' => 'active', "created_at" => now(), "updated_at" => now()],
             ['name' => 'completed', "created_at" => now(), "updated_at" => now()],
             ['name' => 'pending', "created_at" => now(), "updated_at" => now()],
-            ['name' => 'rejected', "created_at" => now(), "updated_at" => now()],
         ]);
     }
 }

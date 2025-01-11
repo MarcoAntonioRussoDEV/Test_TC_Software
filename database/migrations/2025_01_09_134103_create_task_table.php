@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title')->max(40)->required()->unique();
             $table->text('description');
             $table->string("status")->default("pending")->nullable();
-            $table->date("completed_at")->nullable()->default(null);
+            $table->timestamp("completed_at")->nullable()->default(null);
             $table->timestamps();
 
             $table->foreign('status')->references('name')->on('statuses');

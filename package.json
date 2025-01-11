@@ -16,6 +16,7 @@
         "vite": "^6.0.7"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.7.2",
         "livewire": "^0.6.1"
     }
 }
