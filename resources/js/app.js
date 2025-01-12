@@ -40,11 +40,3 @@ wire.on("toast-show", () =>{
 });
 
 
-document.addEventListener('click', function(event) {
-    const modal = document.querySelector('#show-modal');
-    const modalBox = document.querySelector('#show-modal-box');
-
-    if (modal && modalBox && !modalBox.contains(event.target) ) {
-        wire.call('closeModal');
-    }
-});
