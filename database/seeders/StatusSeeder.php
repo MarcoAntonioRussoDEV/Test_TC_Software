@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,9 +12,11 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('statuses')->insert([
-            ['name' => 'completed', "created_at" => now(), "updated_at" => now()],
-            ['name' => 'pending', "created_at" => now(), "updated_at" => now()],
-        ]);
+        if (DB::table('statuses')->count() == 0) {
+            DB::table('statuses')->insert([
+                ['name' => 'completed', 'created_at' => now(), 'updated_at' => now()],
+                ['name' => 'pending', 'created_at' => now(), 'updated_at' => now()],
+            ]);
+        }
     }
 }
